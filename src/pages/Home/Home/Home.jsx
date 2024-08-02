@@ -4,6 +4,7 @@ import Bistro from "../Bistro/Bistro";
 import Category from "../Category/Category";
 import Featured from "../Featured/Featured";
 import PopularMenu from "../PopularMenu/PopularMenu";
+import Recommends from "../Recommends/Recommends";
 import Testimonials from "../Testimonials/Testimonials";
 
 const Home = () => {
@@ -13,6 +14,7 @@ const Home = () => {
            <Category></Category>
            <Bistro></Bistro>
            <PopularMenu></PopularMenu>
+           <Recommends></Recommends>
            <Featured></Featured>
            <Testimonials></Testimonials>
         </div>
