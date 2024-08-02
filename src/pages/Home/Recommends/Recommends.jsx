@@ -11,8 +11,8 @@ const Recommends = () => {
                 heading={'CHEF RECOMMENDS'}
             ></SectionTitle>
 
-            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 justify-center">
-                
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 justify-items-center">
+
                 <div className="card bg-base-100 w-96 shadow-xl">
                     <figure className="px-10 pt-10">
                         <img
