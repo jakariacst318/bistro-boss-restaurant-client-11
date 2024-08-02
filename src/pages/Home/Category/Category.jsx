@@ -2,6 +2,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 
+
 import 'swiper/css';
 import 'swiper/css/pagination';
 
@@ -14,46 +15,45 @@ import SectionTitle from '../../../Components/SectionTitle/SectionTitle';
 
 const Category = () => {
     return (
-        <div>
-            <section>
-                <SectionTitle
+        <section className='mt-20'>
+            <SectionTitle
                 subHeading={'From 11:00 am to 11:00 pm '}
                 heading={'order online'}
-                ></SectionTitle>
+            ></SectionTitle>
 
-                <Swiper
-                    slidesPerView={4}
-                    spaceBetween={30}
-                    centeredSlides={true}
-                    pagination={{
-                        clickable: true,
-                    }}
-                    modules={[Pagination]}
-                    className="mySwiper mb-24"
-                >
-                    <SwiperSlide>
-                        <img src={slider1} alt="img" />
-                        <h3 className='text-4xl text-center text-white uppercase  -mt-14'>salads</h3>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <img src={slider2} alt="img" />
-                        <h3 className='text-4xl text-center text-white uppercase  -mt-14'>soups</h3>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <img src={slider3} alt="img" />
-                        <h3 className='text-4xl text-center text-white uppercase  -mt-14'>pizzas</h3>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <img src={slider4} alt="img" />
-                        <h3 className='text-4xl text-center text-white uppercase  -mt-14'>desserts</h3>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <img src={slider5} alt="img" />
-                        <h3 className='text-4xl text-center text-white uppercase  -mt-14'>salads</h3>
-                    </SwiperSlide>
-                </Swiper>
-            </section>
-        </div>
+            <Swiper
+                slidesPerView={4}
+                spaceBetween={30}
+                centeredSlides={true}
+                pagination={{
+                    clickable: true,
+                }}
+                modules={[Pagination]}
+                className="mySwiper mb-24"
+            >
+                <SwiperSlide>
+                    <img src={slider1} alt="img" />
+                    <h3 className='text-4xl text-center text-white uppercase  -mt-14'>salads</h3>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img src={slider2} alt="img" />
+                    <h3 className='text-4xl text-center text-white uppercase  -mt-14'>soups</h3>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img src={slider3} alt="img" />
+                    <h3 className='text-4xl text-center text-white uppercase  -mt-14'>pizzas</h3>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img src={slider4} alt="img" />
+                    <h3 className='text-4xl text-center text-white uppercase  -mt-14'>desserts</h3>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img src={slider5} alt="img" />
+                    <h3 className='text-4xl text-center text-white uppercase  -mt-14'>salads</h3>
+                </SwiperSlide>
+            </Swiper>
+
+        </section>
     );
 };
 
