@@ -30,11 +30,7 @@ const PopularMenu = () => {
             <div className="flex justify-center">
                 <button className="btn btn-outline  border-black border-0 border-b-4  hover:bg-gray-300 hover:text-black">View Full  Menu</button>
             </div>
-
-            <div className="mt-20 text-center font-semibold text-3xl py-10 bg-black text-white">
-                <p className="">Call Us: +8801308-000000 </p>
-
-            </div>
+            
         </section>
     );
 };

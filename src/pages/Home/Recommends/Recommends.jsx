@@ -21,7 +21,7 @@ const Recommends = () => {
                             className="rounded-xl" />
                     </figure>
                     <div className="card-body items-center text-center">
-                        <h2 className="card-title">pizza</h2>
+                        <h2 className="card-title">salad</h2>
                         <p>Lettuce, Eggs, Parmesan Cheese, Chicken Breast Fillets</p>
                         <div className="card-actions">
                             <button className="btn text-[#BB8506] 
@@ -38,7 +38,7 @@ const Recommends = () => {
                             className="rounded-xl" />
                     </figure>
                     <div className="card-body items-center text-center">
-                        <h2 className="card-title">salad</h2>
+                        <h2 className="card-title">pizza</h2>
                         <p>Lettuce, Eggs, Parmesan Cheese, Chicken Breast Fillets</p>
                         <div className="card-actions">
                             <button className="btn text-[#BB8506] 
