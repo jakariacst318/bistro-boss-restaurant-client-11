@@ -31,8 +31,8 @@ const PopularMenu = () => {
                     popular.map(item => <MenuItem
                         key={item._id}
                         item={item}></MenuItem>)
-                } 
-                 
+                }
+
 
                 {/* {
                     menu.map(item => <MenuItem
