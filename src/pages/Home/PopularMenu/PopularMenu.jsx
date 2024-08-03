@@ -1,9 +1,14 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
+import useMenu from "../../../Hooks/useMenu";
 import MenuItem from "../../Shared/MenuItem/MenuItem";
 
 const PopularMenu = () => {
-    const [menu, setMenu] = useState([]);
+    const [menu] = useMenu()
+    const popular = menu.filter(item => item.category === 'popular')
+
+    /*
+     const [menu, setMenu] = useState([]);
     useEffect(() => {
         fetch('menu.json')
             .then(res => res.json())
@@ -11,7 +16,8 @@ const PopularMenu = () => {
                 const popularItems = data.filter(item => item.category === 'popular');
                 setMenu(popularItems)
             })
-    }, [])
+    }, []) 
+    */
     return (
         <section>
             <SectionTitle
@@ -22,15 +28,22 @@ const PopularMenu = () => {
 
             <div className="grid md:grid-cols-2 gap-12 mb-16">
                 {
+                    popular.map(item => <MenuItem
+                        key={item._id}
+                        item={item}></MenuItem>)
+                } 
+                 
+
+                {/* {
                     menu.map(item => <MenuItem
                         key={item._id}
                         item={item}></MenuItem>)
-                }
+                } */}
             </div>
             <div className="flex justify-center">
                 <button className="btn btn-outline  border-black border-0 border-b-4  hover:bg-gray-300 hover:text-black">View Full  Menu</button>
             </div>
-            
+
         </section>
     );
 };
