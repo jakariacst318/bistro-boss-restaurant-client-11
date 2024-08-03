@@ -41,22 +41,12 @@ const Menu = () => {
             ></SectionTitle>
 
             {/*main menu cover offered category  */}
-            <MenuCategory
-                items={offered}
-            ></MenuCategory>
-            <div className="flex justify-center mb-14">
-                <button className="btn btn-outline  border-black border-0 border-b-4  hover:bg-gray-300 hover:text-black">ORDER YOUR FAVOURITE FOOD</button>
-            </div>
-
+            <MenuCategory items={offered}></MenuCategory>
+            
             {/* dessert category */}
-            <MenuCategory
-                items={dessert}
-                title="dessert"
+            <MenuCategory items={dessert}title="dessert"
                 coverImg={dessertImage}
             ></MenuCategory>
-            <div className="flex justify-center mb-14">
-                <button className="btn btn-outline  border-black border-0 border-b-4  hover:bg-gray-300 hover:text-black">ORDER YOUR FAVOURITE FOOD</button>
-            </div>
 
             {/* pizza category */}
             <MenuCategory
@@ -64,9 +54,6 @@ const Menu = () => {
                 title="pizza"
                 coverImg={pizzaImage}
             ></MenuCategory>
-            <div className="flex justify-center mb-14">
-                <button className="btn btn-outline  border-black border-0 border-b-4  hover:bg-gray-300 hover:text-black">ORDER YOUR FAVOURITE FOOD</button>
-            </div>
 
             {/* salad category */}
             <MenuCategory
@@ -74,9 +61,6 @@ const Menu = () => {
                 title="salad"
                 coverImg={saladImage}
             ></MenuCategory>
-            <div className="flex justify-center mb-14">
-                <button className="btn btn-outline  border-black border-0 border-b-4  hover:bg-gray-300 hover:text-black">ORDER YOUR FAVOURITE FOOD</button>
-            </div>
 
             {/* soup category */}
             <MenuCategory
@@ -84,9 +68,6 @@ const Menu = () => {
                 title="soup"
                 coverImg={soupImage}
             ></MenuCategory>
-            <div className="flex justify-center mb-14">
-                <button className="btn btn-outline  border-black border-0 border-b-4  hover:bg-gray-300 hover:text-black">ORDER YOUR FAVOURITE FOOD</button>
-            </div>
         </div>
     );
 };
