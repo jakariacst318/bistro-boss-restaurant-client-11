@@ -16,6 +16,16 @@ const Menu = () => {
                     title={'our menu'}
                 ></Cover>
                 <PopularMenu></PopularMenu>
+                <Cover
+                    background={menuImage}
+                    title={'our menu'}
+                ></Cover>
+                <PopularMenu></PopularMenu>
+                <Cover
+                    background={menuImage}
+                    title={'our menu'}
+                ></Cover>
+                <PopularMenu></PopularMenu>
             </div>
     );
 };
