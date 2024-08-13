@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
+import { FaUserCircle } from "react-icons/fa";
 
 const Navbar = () => {
 
@@ -8,7 +9,7 @@ const Navbar = () => {
     const handleLogOut = () => {
         logOut()
             .then(() => {
-                
+
             })
             .catch(error => console.log(error))
     }
@@ -19,6 +20,7 @@ const Navbar = () => {
         <li><Link to='/dashboard'> DASHBOARD</Link></li>
         <li><Link to='/menu'> OUR MENU</Link></li>
         <li><Link to='/order/salad'> ORDER FOOD</Link></li>
+        <li><Link to='/secret'> secret</Link></li>
 
     </>
     return (
@@ -46,8 +48,19 @@ const Navbar = () => {
                 <div className="navbar-end mr-4">
 
                     {
-                        user ? <> <button onClick={handleLogOut} className="btn btn-active btn-ghost">Log out</button></>
-                            : <> <Link to='/login'> LOGIN</Link></>
+                        user ? <>
+                            <div className="tooltip hover:tooltip-open tooltip-bottom" data-tip="Log out">
+                                <button onClick={handleLogOut} className="btn btn-active btn-ghost ">
+                                    <img src={user.photoURL} alt="" />
+                                    {user.email} </button>
+                            </div>
+                        </>
+
+                            : <> <Link to='/login'><span className="flex items-center">
+                                <span className="text-2xl mr-2">
+                                    <FaUserCircle />
+                                </span> Log in
+                            </span></Link></>
                     }
                 </div>
             </div>

@@ -4,10 +4,10 @@ import { AiFillGoogleCircle } from "react-icons/ai";
 
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import login from '../../assets/others/authentication2.png'
-import { useContext, useEffect,  useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../Providers/AuthProvider';
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 const Login = () => {
@@ -15,6 +15,9 @@ const Login = () => {
     const [disable, setDisable] = useState(true)/* old */
 
     const { signIn } = useContext(AuthContext)
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
     useEffect(() => {
         loadCaptchaEnginge(6);
@@ -45,6 +48,7 @@ const Login = () => {
                     icon: "success",
                     title: "Log in successfully"
                 });
+                navigate(from, { replace: true });
             })
             .catch((error) => {
                 const errorMessage = error.message;
@@ -53,7 +57,7 @@ const Login = () => {
     }
 
     const handleValidateCaptcha = (e) => {
-        const userCaptchaValue = e.target.value; 
+        const userCaptchaValue = e.target.value;
         // const userCaptchaValue = captchaRef.current.value; /* old */
 
 
@@ -131,15 +135,15 @@ const Login = () => {
                                 <label className="label">
                                     <LoadCanvasTemplate />
                                 </label>
-                                <input  onBlur={handleValidateCaptcha} type="text"  name='captcha' placeholder="type the captcha" className="input input-bordered" />
+                                <input onBlur={handleValidateCaptcha} type="text" name='captcha' placeholder="type the captcha" className="input input-bordered" />
 
-                                <p  className="btn btn-outline btn-sm mt-3">Validate Captcha</p>
-                               
+                                <p className="btn btn-outline btn-sm mt-3">Validate Captcha</p>
+
                                 {/* <button onClick={handleValidateCaptcha} className="btn btn-outline btn-sm mt-3">Validate Captcha</button>  */} {/* old */}
 
                             </div>
                             <div className="form-control mt-6">
-                                <input disabled={disable}  className='btn bg-[#D1A054] text-white hover:bg-[#1F2937]' type="submit" value="Login" />
+                                <input disabled={disable} className='btn bg-[#D1A054] text-white hover:bg-[#1F2937]' type="submit" value="Login" />
                             </div>
                         </form>
                         <div className='text-center mb-5'>
