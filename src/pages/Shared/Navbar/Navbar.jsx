@@ -20,7 +20,7 @@ const Navbar = () => {
         <li><Link to='/dashboard'> DASHBOARD</Link></li>
         <li><Link to='/menu'> OUR MENU</Link></li>
         <li><Link to='/order/salad'> ORDER FOOD</Link></li>
-        <li><Link to='/secret'> secret</Link></li>
+        <li><Link to='/secret'>SECRET</Link></li>
 
     </>
     return (
@@ -31,7 +31,7 @@ const Navbar = () => {
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
-                        <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-black font-medium">
+                        <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-black font-medium ">
                             {navOptions}
 
                         </ul>
@@ -41,7 +41,7 @@ const Navbar = () => {
                     </a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1">
+                    <ul className="menu menu-horizontal px-1 font-medium">
                         {navOptions}
                     </ul>
                 </div>
@@ -51,8 +51,9 @@ const Navbar = () => {
                         user ? <>
                             <div className="tooltip hover:tooltip-open tooltip-bottom" data-tip="Log out">
                                 <button onClick={handleLogOut} className="btn btn-active btn-ghost ">
-                                    <img src={user.photoURL} alt="" />
-                                    {user.email} </button>
+                                    <span className="text-lg mr-2">{user?.displayName}</span>
+                                    <img className="w-12 rounded-full" src={user?.photoURL} alt="" />
+                                </button>
                             </div>
                         </>
 

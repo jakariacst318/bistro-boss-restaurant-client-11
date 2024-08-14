@@ -2,25 +2,50 @@
 import login from '../../assets/others/authentication2.png'
 import { CiFacebook } from "react-icons/ci";
 import { AiFillGoogleCircle } from "react-icons/ai";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { Helmet } from 'react-helmet';
 import { useContext } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 
 const SignUp = () => {
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const {createUser} =  useContext(AuthContext)
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { createUser, updateUpdateProfile } = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const onSubmit = data => {
         console.log(data)
         createUser(data.email, data.password)
-        .then(result =>{
-            const loggedUser = result.user;
-            console.log(loggedUser)
-        })
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser)
+                updateUpdateProfile(data.name, data.photoURL)
+                .then(() => {
+                    console.log('user profile info update')
+                    reset();
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.onmouseenter = Swal.stopTimer;
+                            toast.onmouseleave = Swal.resumeTimer;
+                        }
+                    });
+                    Toast.fire({
+                        icon: "success",
+                        title: "Registration in successfully"
+                    });
+                    // navigate('/login')
+                    navigate('/')
+                })
+                .catch(error => console.log(error))
+            })
     };
 
     return (
@@ -43,7 +68,17 @@ const SignUp = () => {
                                     <span className="label-text font-semibold">Name</span>
                                 </label>
                                 <input type="text"  {...register("name", { required: true })} name='name' placeholder="Your Name" className="input input-bordered" />
+
                                 {errors.name && <span className='text-red-600  font-semibold'> Name is Required</span>}
+
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text font-semibold">Photo URL</span>
+                                </label>
+                                <input type="text"  {...register("photoURL", { required: true })}  placeholder="Photo URL" className="input input-bordered" />
+
+                                {errors.photoURL && <span className='text-red-600  font-semibold'> Photo URL is Required</span>}
 
                             </div>
                             <div className="form-control">
