@@ -25,7 +25,7 @@ const Navbar = () => {
         <li><Link to='/dashboard'> DASHBOARD</Link></li>
         <li><Link to='/menu'> OUR MENU</Link></li>
         <li><Link to='/order/salad'> ORDER FOOD</Link></li>
-        <li><Link to='/'>
+        <li><Link to='/dashboard/cart'>
             <p className="flex items-center text-xl">
                 <TiShoppingCart /><span className="ms-2 text-[#EEFF25]"> {cart.length}</span>
             </p>
