@@ -2,10 +2,15 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { FaUserCircle } from "react-icons/fa";
+import { TiShoppingCart } from "react-icons/ti";
+import useCart from "../../../Hooks/useCart";
+
 
 const Navbar = () => {
 
     const { user, logOut } = useContext(AuthContext)
+    const [cart] = useCart()
+
     const handleLogOut = () => {
         logOut()
             .then(() => {
@@ -20,6 +25,11 @@ const Navbar = () => {
         <li><Link to='/dashboard'> DASHBOARD</Link></li>
         <li><Link to='/menu'> OUR MENU</Link></li>
         <li><Link to='/order/salad'> ORDER FOOD</Link></li>
+        <li><Link to='/'>
+            <p className="flex items-center text-xl">
+                <TiShoppingCart /><span className="ms-2 text-[#EEFF25]"> {cart.length}</span>
+            </p>
+        </Link></li>
         <li><Link to='/secret'>SECRET</Link></li>
 
     </>
@@ -41,7 +51,7 @@ const Navbar = () => {
                     </a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1 font-medium">
+                    <ul className="menu menu-horizontal px-1 font-medium items-center">
                         {navOptions}
                     </ul>
                 </div>
