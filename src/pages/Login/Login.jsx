@@ -1,7 +1,4 @@
 
-import { CiFacebook } from "react-icons/ci";
-import { AiFillGoogleCircle } from "react-icons/ai";
-
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import login from '../../assets/others/authentication2.png'
 import { useContext, useEffect, useState } from 'react';
@@ -9,6 +6,7 @@ import Swal from 'sweetalert2';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import SocialLogin from "../../Components/SocialLogin/SocialLogin";
 
 const Login = () => {
     // const captchaRef = useRef(null) /* old */
@@ -149,11 +147,8 @@ const Login = () => {
                         <div className='text-center mb-5'>
                             <h2 className="text-lg">New here? <span className="font-semibold text-[#D1A054]"><Link to='/signup' >Create a New Account</Link></span></h2>
                             <p className="font-semibold text-xl py-3">Or sign in with</p>
-                            <div className="text-4xl flex justify-center gap-x-4">
-                                <p className="hover:bg-[#D1A054] rounded-full hover:text-white"><CiFacebook /></p>
-                                <p className="hover:bg-[#D1A054] rounded-full hover:text-white"><AiFillGoogleCircle /></p>
-
-                            </div>
+                            
+                            <SocialLogin></SocialLogin>
                         </div>
                     </div>
                 </div>

@@ -5,11 +5,13 @@ import { FaRegCalendarAlt } from "react-icons/fa";
 import { MdOutlineRateReview } from "react-icons/md";
 import { MdOutlineRestaurantMenu } from "react-icons/md";
 import { RiMenuUnfold3Line } from "react-icons/ri";
+import useCart from "../Hooks/useCart";
 
 
 
 
 const Dashboard = () => {
+    const [cart] = useCart();
     return (
         <div className="flex">
             {/* dashboard site bar */}
@@ -20,7 +22,7 @@ const Dashboard = () => {
                         <NavLink to='/dashboard/userHome'>  <span><FaHome /></span>User Home</NavLink>
                     </li>
                     <li className="text-2xl">
-                        <NavLink to='/dashboard/cart'>  <span><TiShoppingCart /></span> My Cart</NavLink>
+                        <NavLink to='/dashboard/cart'>  <span><TiShoppingCart /></span> My Cart ({cart.length}) </NavLink>
                     </li>
                     <li className="text-2xl">
                         <NavLink to='/dashboard/reservation'>  <span><FaRegCalendarAlt /></span> Reservation</NavLink>

@@ -1,17 +1,18 @@
 
 import login from '../../assets/others/authentication2.png'
-import { CiFacebook } from "react-icons/ci";
-import { AiFillGoogleCircle } from "react-icons/ai";
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { Helmet } from 'react-helmet';
 import { useContext } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
 import Swal from 'sweetalert2';
+import useAxiosPublic from '../../Hooks/useAxiosPublic';
+import SocialLogin from '../../Components/SocialLogin/SocialLogin';
 
 
 const SignUp = () => {
 
+    const axiosPublic = useAxiosPublic()
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { createUser, updateUpdateProfile } = useContext(AuthContext)
     const navigate = useNavigate()
@@ -23,28 +24,39 @@ const SignUp = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser)
                 updateUpdateProfile(data.name, data.photoURL)
-                .then(() => {
-                    console.log('user profile info update')
-                    reset();
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: "top-end",
-                        showConfirmButton: false,
-                        timer: 3000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.onmouseenter = Swal.stopTimer;
-                            toast.onmouseleave = Swal.resumeTimer;
+                    .then(() => {
+                        // console.log('user profile info update')
+                        const userInfo = {
+                            name: data.name,
+                            email: data.email
                         }
-                    });
-                    Toast.fire({
-                        icon: "success",
-                        title: "Registration in successfully"
-                    });
-                    // navigate('/login')
-                    navigate('/')
-                })
-                .catch(error => console.log(error))
+                        axiosPublic.post('/users', userInfo)
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    console.log('user add to  info')
+                                    reset();
+                                    const Toast = Swal.mixin({
+                                        toast: true,
+                                        position: "top-end",
+                                        showConfirmButton: false,
+                                        timer: 3000,
+                                        timerProgressBar: true,
+                                        didOpen: (toast) => {
+                                            toast.onmouseenter = Swal.stopTimer;
+                                            toast.onmouseleave = Swal.resumeTimer;
+                                        }
+                                    });
+                                    Toast.fire({
+                                        icon: "success",
+                                        title: "Registration in successfully"
+                                    });
+                                    // navigate('/login')
+                                    navigate('/')
+                                        .catch(error => console.log(error))
+                                }
+                            })
+
+                    })
             })
     };
 
@@ -76,7 +88,7 @@ const SignUp = () => {
                                 <label className="label">
                                     <span className="label-text font-semibold">Photo URL</span>
                                 </label>
-                                <input type="text"  {...register("photoURL", { required: true })}  placeholder="Photo URL" className="input input-bordered" />
+                                <input type="text"  {...register("photoURL", { required: true })} placeholder="Photo URL" className="input input-bordered" />
 
                                 {errors.photoURL && <span className='text-red-600  font-semibold'> Photo URL is Required</span>}
 
@@ -115,11 +127,8 @@ const SignUp = () => {
                         <div className='text-center mb-5'>
                             <h2 className="text-lg">Already registered? <span className="font-semibold text-[#D1A054]"><Link to='/login' > Go to log in</Link></span></h2>
                             <p className="font-semibold text-xl py-3">Or sign up with</p>
-                            <div className="text-4xl flex justify-center gap-x-4">
-                                <p className="hover:bg-[#D1A054] rounded-full hover:text-white"><CiFacebook /></p>
-                                <p className="hover:bg-[#D1A054] rounded-full hover:text-white"><AiFillGoogleCircle /></p>
 
-                            </div>
+                            <SocialLogin></SocialLogin>
                         </div>
                     </div>
                 </div>
