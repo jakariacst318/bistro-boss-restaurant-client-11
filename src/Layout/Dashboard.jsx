@@ -7,6 +7,7 @@ import { MdOutlineRestaurantMenu } from "react-icons/md";
 import { RiMenuUnfold3Line } from "react-icons/ri";
 import { IoIosMail } from "react-icons/io";
 import useCart from "../Hooks/useCart";
+import useAdmin from "../Hooks/useAdmin";
 
 
 
@@ -17,7 +18,7 @@ const Dashboard = () => {
 
     /* admin value from the database  */
 
-    const isAdmin = true
+    const [isAdmin] = useAdmin();
 
     return (
         <div className="flex">

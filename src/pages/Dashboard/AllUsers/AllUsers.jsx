@@ -11,11 +11,11 @@ const AllUsers = () => {
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await axiosSecure.get('/users',{
+            const res = await axiosSecure.get('/users'/* ,{
                 headers:{
                     authorization: `Bearer ${localStorage.getItem('access-token')}`
                 }
-            });
+            }  axios hook us kora hoice pore tar jonno comment kore rakhlam*/);
             return res.data
         }
 
@@ -30,7 +30,7 @@ const AllUsers = () => {
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
-                        title: "Your work has been saved",
+                        title: "Your work has been Admin saved",
                         showConfirmButton: false,
                         timer: 1500
                     });
