@@ -92,7 +92,7 @@ const Cart = () => {
                                 <th>
                                     <button
                                         onClick={() => handleDelete(item._id)}
-                                        className="btn bg-red-600 hover:bg-[#1F2937] text-white "><RiDeleteBinLine /></button>
+                                        className="btn bg-red-600 text-2xl hover:bg-[#1F2937] text-white "><RiDeleteBinLine /></button>
                                 </th>
                             </tr>)
                         }
