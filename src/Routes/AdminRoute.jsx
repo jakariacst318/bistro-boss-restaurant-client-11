@@ -1,13 +1,15 @@
-
-import { Navigate, useLocation } from "react-router-dom";
 import { Radio } from "react-loader-spinner";
 import useAuth from "../Hooks/useAuth";
+import useAdmin from "../Hooks/useAdmin";
+import { Navigate, useLocation } from "react-router-dom";
 
-const PrivetRoute = ({ children }) => {
-    const { user, loading } = useAuth()
-    const location = useLocation()
+const AdminRoute = (children) => {
 
-    if (loading) {
+    const [user, loading] = useAuth();
+    const [isAdmin, isAdminLoading] = useAdmin();
+    const location = useLocation();
+
+    if (loading || isAdminLoading) {
         return <div className="flex justify-center pt-28">
             <Radio
                 visible={true}
@@ -21,7 +23,7 @@ const PrivetRoute = ({ children }) => {
         </div>
     }
 
-    if (user) {
+    if (user && isAdmin) {
         return children;
     }
 
@@ -30,4 +32,4 @@ const PrivetRoute = ({ children }) => {
     );
 };
 
-export default PrivetRoute;
+export default AdminRoute;
