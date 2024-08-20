@@ -4,6 +4,7 @@ import { FaEdit } from "react-icons/fa";
 import useMenu from "../../../Hooks/useMenu";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 const ManageItems = () => {
 
@@ -30,7 +31,7 @@ const ManageItems = () => {
                         title: `${item.name} has been deleted`,
                         showConfirmButton: false,
                         timer: 1500
-                    });                   
+                    });
                 }
                 // console.log(res.data)
                 // Swal.fire({
@@ -87,10 +88,11 @@ const ManageItems = () => {
                                 </td>
                                 <td className="font-medium">{item.price}</td>
                                 <td>
-                                    <button
-                                        /* onClick={() => handleItemUpdate(item)} */
-                                        className="btn bg-[#e9810b] text-2xl hover:bg-[#1F2937] text-white "><FaEdit />
-                                    </button>
+                                    <Link to={`/dashboard/updateItem/${item._id}`}>
+                                        <button
+                                            className="btn bg-[#e9810b] text-2xl hover:bg-[#1F2937] text-white "><FaEdit />
+                                        </button>
+                                    </Link>
                                 </td>
                                 <td>
                                     <button
