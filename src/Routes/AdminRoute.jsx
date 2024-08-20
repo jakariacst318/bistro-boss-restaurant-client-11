@@ -3,9 +3,9 @@ import useAuth from "../Hooks/useAuth";
 import useAdmin from "../Hooks/useAdmin";
 import { Navigate, useLocation } from "react-router-dom";
 
-const AdminRoute = (children) => {
+const AdminRoute = ({children}) => {
 
-    const [user, loading] = useAuth();
+    const {user, loading} = useAuth();
     const [isAdmin, isAdminLoading] = useAdmin();
     const location = useLocation();
 
@@ -28,7 +28,7 @@ const AdminRoute = (children) => {
     }
 
     return (
-        <Navigate to='/login' state={{ from: location }} replace ></Navigate>
+        <Navigate to='/' state={{ from: location }} replace ></Navigate>
     );
 };
 

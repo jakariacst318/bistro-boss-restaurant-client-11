@@ -21,7 +21,7 @@ const Dashboard = () => {
     const [isAdmin] = useAdmin();
 
     return (
-        <div className="flex">
+        <div className="md:flex ">
             {/* dashboard site bar */}
             <div className="w-72 min-h-screen bg-[#D1A054]">
                 <ul className="menu">

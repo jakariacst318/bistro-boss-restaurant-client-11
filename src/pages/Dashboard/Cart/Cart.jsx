@@ -48,8 +48,8 @@ const Cart = () => {
             ></SectionTitle>
 
             <div className="flex justify-evenly mb-10">
-                <h2 className="text-3xl font-medium">Total orders: {cart.length}</h2>
-                <h2 className="text-3xl font-medium">Total Price:$ {totalPriceFixed}</h2>
+                <h2 className="lg:text-3xl text-xl font-medium">Total orders: {cart.length}</h2>
+                <h2 className="lg:text-3xl text-xl font-medium">Total Price:$ {totalPriceFixed}</h2>
                 <button className="btn bg-[#D1A054] text-white hover:bg-[#1F2937]"> PAY</button>
             </div>
 
@@ -60,7 +60,7 @@ const Cart = () => {
                     <thead className="font-semibold text-xl bg-[#D1A054]  text-white ">
                         <tr >
                             <th>
-                                #
+                                No
                             </th>
                             <th>IMAGE</th>
                             <th>NAME</th>
