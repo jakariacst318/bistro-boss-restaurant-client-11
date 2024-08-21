@@ -58,7 +58,6 @@ const AddItems = () => {
                 subHeading={"What's new?"}
                 heading={"ADD AN ITEM"}
             ></SectionTitle>
-            <h2 className="text-4xl"> add item </h2>
 
             {/*add to item form */}
             <div>

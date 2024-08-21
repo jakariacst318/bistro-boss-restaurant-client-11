@@ -3,11 +3,12 @@ import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import useCart from "../../../Hooks/useCart";
 import { RiDeleteBinLine } from "react-icons/ri";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 
 const Cart = () => {
 
-    const [cart ,refetch] = useCart()
+    const [cart, refetch] = useCart()
     const axiosSecure = useAxiosSecure()
 
     const totalPrice = cart.reduce((total, item) => total + item.price, 0)
@@ -47,10 +48,17 @@ const Cart = () => {
                 heading={"WANNA ADD MORE?"}
             ></SectionTitle>
 
-            <div className="flex justify-evenly mb-10">
+            <div className="flex justify-evenly mb-10 mt-16">
                 <h2 className="lg:text-3xl text-xl font-medium">Total orders: {cart.length}</h2>
                 <h2 className="lg:text-3xl text-xl font-medium">Total Price:$ {totalPriceFixed}</h2>
-                <button className="btn bg-[#D1A054] text-white hover:bg-[#1F2937]"> PAY</button>
+
+                {cart.length ? <Link to='/dashboard/payment'>
+                    <button className="btn bg-[#D1A054] text-white hover:bg-[#1F2937]"> PAY</button>
+                </Link> :
+                    <div className="tooltip" data-tip="Add to Card">
+                        <button disabled className="btn  bg-[#D1A054] text-white hover:bg-[#1F2937]"> PAY</button>
+                    </div>
+                }
             </div>
 
             {/* cart */}
