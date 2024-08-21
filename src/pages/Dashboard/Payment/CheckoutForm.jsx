@@ -4,6 +4,7 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useCart from "../../../Hooks/useCart";
 import useAuth from "../../../Hooks/useAuth";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 
 const CheckoutForm = () => {
@@ -14,6 +15,7 @@ const CheckoutForm = () => {
     const [clientSecret, setClientSecret] = useState('');
     const axiosSecure = useAxiosSecure();
     const { user } = useAuth();
+    const navigate = useNavigate();
     const [cart, refetch] = useCart();
     const totalPrice = cart.reduce((total, item) => total + item.price, 0)
 
@@ -85,7 +87,7 @@ const CheckoutForm = () => {
 
                 const res = await axiosSecure.post('/payments', payment);
 
-                console.log('payment saved', res.data, 'bumbum 87',res.data?.paymentResult?.insertedId);
+                console.log('payment saved', res.data);
                 
                 refetch();
                 if (res.data?.paymentResult?.insertedId) {
@@ -96,6 +98,7 @@ const CheckoutForm = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
+                    navigate('/dashboard/paymentHistory')
                 }
                 
             }

@@ -53,7 +53,7 @@ const Dashboard = () => {
                                     <NavLink to='/dashboard/cart'>  <span><TiShoppingCart /></span> My Cart ({cart.length}) </NavLink>
                                 </li>
                                 <li className="text-2xl">
-                                    <NavLink to='/dashboard/reservation'>  <span><FaRegCalendarAlt /></span> Reservation</NavLink>
+                                    <NavLink to='/dashboard/paymentHistory'>  <span><FaRegCalendarAlt /></span> Payment History</NavLink>
                                 </li>
                                 <li className="text-2xl">
                                     <NavLink to='/dashboard/review'>  <span><MdOutlineRateReview /></span>Add a Review</NavLink>
