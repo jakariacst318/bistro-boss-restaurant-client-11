@@ -6,13 +6,13 @@ const axiosSecure = axios.create({
     baseURL: 'http://localhost:5000'
 })
 const useAxiosSecure = () => {
-
+ 
     const navigate = useNavigate()
     const { logOut } = useAuth()
     // request interceptors to add authorization headers for every secure call to teh api
     axiosSecure.interceptors.request.use(function (config) {
         const token = localStorage.getItem('access-token')
-        // console.log('request stop by interceptors', token)
+        // console.log('request stop by interceptors before adding token khujteci', token)
         config.headers.authorization = `Bearer ${token}`
         return config;
     }, function (error) {

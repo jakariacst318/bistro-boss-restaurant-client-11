@@ -17,6 +17,7 @@ const Menu = () => {
     const salad = menu.filter(item => item.category === 'salad')
     const soup = menu.filter(item => item.category === 'soup')
     const offered = menu.filter(item => item.category === 'offered')
+    console.log('menu koi 11111',menu, 'salad 222',salad )
     return (
         <div className="">
 

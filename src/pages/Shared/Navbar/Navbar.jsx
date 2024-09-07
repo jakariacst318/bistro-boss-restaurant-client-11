@@ -4,12 +4,14 @@ import { AuthContext } from "../../../Providers/AuthProvider";
 import { FaUserCircle } from "react-icons/fa";
 import { TiShoppingCart } from "react-icons/ti";
 import useCart from "../../../Hooks/useCart";
+import useAdmin from "../../../Hooks/useAdmin";
 
 
 const Navbar = () => {
 
     const { user, logOut } = useContext(AuthContext)
     const [cart] = useCart()
+    const [isAdmin] = useAdmin();
 
     const handleLogOut = () => {
         logOut()
@@ -22,7 +24,7 @@ const Navbar = () => {
     const navOptions = <>
         <li><Link to='/'> HOME</Link></li>
         <li><Link to='/contact-us'> CONTACT US</Link></li>
-        <li><Link to='/dashboard'> DASHBOARD</Link></li>
+        {/* <li><Link to='/dashboard'> DASHBOARD</Link></li> */}
         <li><Link to='/menu'> OUR MENU</Link></li>
         <li><Link to='/order/salad'> ORDER FOOD</Link></li>
         <li><Link to='/dashboard/cart'>
@@ -31,6 +33,12 @@ const Navbar = () => {
             </p>
         </Link></li>
         <li><Link to='/secret'>SECRET</Link></li>
+       {
+        user && isAdmin &&  <li><Link to='/dashboard/adminHome'>DASHBOARD</Link></li>
+       }
+       {
+        user && !isAdmin &&  <li><Link to='/dashboard/userHome'>DASHBOARD</Link></li>
+       }
 
     </>
     return (

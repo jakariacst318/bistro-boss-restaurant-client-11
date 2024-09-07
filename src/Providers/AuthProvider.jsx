@@ -54,15 +54,17 @@ const AuthProvider = ({ children }) => {
                 axiosPublic.post('/jwt', userInfo)
                     .then(res => {
                         if (res.data.token) {
-                            localStorage.setItem('access-token', res.data.token)
+                            localStorage.setItem('access-token', res.data.token);
+                            setLoading(false)
                         }
                     })
             }
             else {
                 // remove token (if token stored in the client site: local storage, caching, in memory)
                 localStorage.removeItem('access-token')
+                setLoading(false)
             }
-            setLoading(false)
+            // setLoading(false) /* error jonno new kore */
         });
         return () => {
             return unsubscribe();
