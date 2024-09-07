@@ -5,7 +5,7 @@ const UserHome = () => {
     return (
         <div>
              <h2 className="text-3xl"> Hi Welcome: &nbsp; 
-                <span>
+                <span className="text-[#e7ad00]">
                     {
                         user?.displayName ? user.displayName : 'Back'
                     }
