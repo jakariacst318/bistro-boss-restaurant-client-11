@@ -36,6 +36,7 @@ const PaymentHistory = () => {
                                 <th>TRANSACTION ID</th>
                                 <th>TOTAL PRICE</th>
                                 <th> DATE</th>
+                                <th> STATUS</th>
                             </tr>
                         </thead>
                         <tbody className="font-medium">
@@ -45,6 +46,7 @@ const PaymentHistory = () => {
                                 <td>{payment.transactionId}</td>
                                 <td>{payment.price}</td>
                                 <td>{payment.date}</td>
+                                <td>pending</td>
                             </tr>)}
                         </tbody>
                     </table>
